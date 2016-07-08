@@ -5,6 +5,9 @@
     设置相机管理器（在QRCodeScanSupport的构造函数中直接调用）
 ## [CameraScan.java](https://github.com/GhBoyZL/AllTestCode/blob/master/src/com/exa/alltestcode/CameraScan.java)
     二维码扫描器，直接跳转到这个activity 即可使用
+    
+    REQUEST_CODE 为打开相册的请求码，值自定义
+    RESULT_OK   为相册返回状态码，返回成功则值为-1
   * 注意：需要添加相机权限
   * 加载的布局文件[camera.xml](https://github.com/GhBoyZL/AllTestCode/blob/master/res/layout/camera_scan.xml)
   ```
@@ -54,12 +57,21 @@
 
 </RelativeLayout>
   ```
+
   
 ===
 ## [QRCodeScanSupport.java](https://github.com/GhBoyZL/AllTestCode/blob/master/src/com/tools/camera/QRCodeScanSupport.java)
 ### public void onPause(Activity activity)
-    在Activity中的`onPause`函数中调用
+    在Activity中的`onPause()`函数中调用
 ### public void onResume(Activity activity)
-    在Activity中的`onResume`函数中调用
+    在Activity中的`onResume()`函数中调用
 ### public void setCapturePreview(ImageView capturePreview)
     设置显示预览截图的ImageView
+### public void setOnScanResultListener(OnScanResultListener onScanResultListener)
+    设置扫描结果监听器
+```
+public interface OnScanResultListener {
+	void onScanResult(String notNullResult);
+}
+```
+	其中notNullResult为扫描结果
