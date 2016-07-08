@@ -1,2 +1,3 @@
-# AllTestCode
-It is for testing.
+AllTestCode
+===
+test
