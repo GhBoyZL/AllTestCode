@@ -75,3 +75,34 @@ public interface OnScanResultListener {
 }
 ```
 	其中notNullResult为扫描结果
+## [PicTools.java](https://github.com/GhBoyZL/AllTestCode/blob/master/src/com/tools/PicTools.java)
+	工具类，图片处理
+## [Text2QRBitmap.java](https://github.com/GhBoyZL/AllTestCode/blob/master/src/com/tools/Text2QRBitmap.java)
+	工具类，将指定字符串转换为二维码图片，图片大小可设置(调用了QRCodeEncode.java)
+## [QRCodeEncode.java](https://github.com/GhBoyZL/AllTestCode/blob/master/src/com/tools/camera/QRCodeEncode.java)
+	工具类，将指定字符串转换为二维码图片，图片大小、颜色可设置
+	需要通过内部类Builder类的build方法获取对象，可通过builder对象设置二维码图片各种属性（大小，背景色，编码块颜色，编码格式等）
+# 剪贴板
+## [ClipboardManagerCompat .java](https://github.com/GhBoyZL/AllTestCode/blob/master/src/com/tools/clipboard/ClipboardManagerCompat.java)
+	剪贴板兼容器，通过creat方法 根据不同版本获取不同对象
+### public void setOnAddText(OnAddText mAddText)
+	设置接口，准备向剪贴板内写入内容
+```
+	public interface OnAddText {
+		CharSequence onAddText(); // 返回将要复制到剪贴板的字符串
+	}
+```
+### public abstract void addText()
+	调用此函数，向剪贴板内写入内容
+### public void addPrimaryClipChangedListener(OnPrimaryClipChangedListener listener)
+	添加监听器，监听剪切板内容变化
+```
+	public interface OnPrimaryClipChangedListener {
+		void onPrimaryClipChanged(CharSequence text);
+	}
+```
+	内容改变监听器 改变时执行onPrimaryClipChanged(CharSequence text)
+	text为读取到的内容
+### protected final void notifyPrimaryClipChanged()
+	当剪贴板内容改变时，此函数将会被调用，执行mPrimaryClipChangedListeners.get(i).onPrimaryClipChanged(getText());// 调用gettext()，获得剪贴板的item，
+## 
